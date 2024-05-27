@@ -1,0 +1,20 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Individual Jupyter Notebooks
+*.ipynb_checkpoints/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Specific files and directories in 'code'
+code/.ipynb_checkpoints/
+code/__pycache__/
+code/utils/__pyac
+
+# Specific files and directories in 'data'
+data/.DS_Store
+
+notebooks/
+results/
