@@ -1,0 +1,22 @@
+name: tabmap
+channels:
+  - numba
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10.13
+  - pip=23.3.1
+  - pip: 
+    - gower==0.1.2
+    - numpy==1.23.1
+    - optuna==3.3.0
+    - pandas==1.5.3
+    - pytorch-tabnet==4.1.0
+    - pot==0.9.2
+    - scikit-learn==1.4.2
+    - seaborn==0.12.2
+    - shap==0.36.0
+    - tab-transformer-pytorch==0.2.6
+    - torch==1.13.1
+    - torchvision==0.14.1
+    - xgboost==1.7.4

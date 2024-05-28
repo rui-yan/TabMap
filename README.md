@@ -12,7 +12,7 @@
 ## Table of Contents
 - [Set up the Conda Environment](#set-up-the-conda-environment)
 - [Train and evaluate the TabMap classifier](#train-and-evaluate-the-tabmap-classifier)
-- [Notebook demo for TabMap visualization, classification and interpretation](#notebook-demo-for-tabmap-usage)
+- [Example Jupyter notebooks for using TabMap](#example-jupter-notebooks-for-using-tabmap)
 
 ## Set Up the Conda Environment
 ```bash
@@ -35,12 +35,12 @@ tabmaps = generator.transform(features)
 ```
 
 #### Parameters:
-* **metric: Metric used to compute the feature inter-relationships. *{'correlation', 'euclidean', 'gower'}***
-* **loss_fun: Loss function used for computing the optimal transport. *{'kl_loss', 'sqeuclidean', 'square_loss'}***
-* **epsilon: Entropic regularization parameter (>=0). default=0 (no regularization applied)***.
-* **version: Version of the distance matrix calculation algorithm. default='v2.0'***.
-Versions 'v1.0' and 'v2.0' use different methods for computing grid distances.
-* **num_iter: Number of iterations for the optimal transport problem. default=10***.
+* **metric**: Metric used to compute the feature inter-relationships. *{'correlation', 'euclidean', 'gower'}*
+* **loss_fun**: Loss function used for computing the optimal transport. *{'kl_loss', 'sqeuclidean', 'square_loss'}*
+* **epsilon**: Entropic regularization parameter (>=0). *default=0 (no regularization applied)*
+* **version**: Version of the distance matrix calculation algorithm. *default='v2.0'*
+  * Versions 'v1.0' and 'v2.0' use different methods for computing grid distances.
+* **num_iter**: Number of iterations for the optimal transport problem. *default=10*
 
 #### TabMapGenerator class functions:
 * **fit**(data, truncate=False): Computes the coupling matrix to map the feature space to the 2D map space. The `truncate` parameter determines whether to truncate or zero-pad the data to fit the 2D map.
@@ -54,7 +54,7 @@ python main.py
 ```
 Refer to the [TabMap/code/main.py](https://github.com/rui-yan/TabMap/blob/main/code/main.py) file for details on model training and evaluation. This file also includes k-fold cross-validation, hyperparameter tuning, and comparisons with other classifiers used to generate the results presented in our paper.
 
-## Notebook demo for TabMap visualization, classification and interpretation
+## Example Jupyter notebooks for using TabMap
 TODO
 
 
