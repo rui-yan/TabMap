@@ -305,8 +305,9 @@ class DLModelTuner:
         best_trial_path = f'trial_{best_trial._trial_id}'
         try:
             for ckpt_dir in os.listdir(save_dir):
-                if ckpt_dir != best_trial_path:
-                    shutil.rmtree(os.path.join(save_dir, ckpt_dir))
+                ckpt_path = os.path.join(save_dir, ckpt_dir)
+                if os.path.isdir(ckpt_path) and ckpt_dir != best_trial_path:
+                    shutil.rmtree(ckpt_path)
                     logging.info(f"Removed checkpoint directory: {ckpt_dir}")
         except OSError as e:
             logging.error("Failed to remove checkpoint directories: %s", e)

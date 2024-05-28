@@ -21,9 +21,9 @@ def get_args():
                                      add_help=False)
 
     # Dataset parameters
-    parser.add_argument('--data_path', type=str, default='/home/yan/TabMap/data', 
+    parser.add_argument('--data_path', type=str, default='../data', 
                         help='Path to the dataset directory')
-    parser.add_argument('--data_set', type=str, default='micromass',
+    parser.add_argument('--data_set', type=str, default='parkinson',
                         help='Dataset name')
     parser.add_argument('--scaler_name', type=str, default='minmax', 
                         help='Data preprocessing scaler name')
@@ -55,7 +55,7 @@ def get_args():
                         help='Number of cross-validation trials')
     
     # Other parameters
-    parser.add_argument('--results_path', type=str, default='/home/yan/TabMap/results', 
+    parser.add_argument('--results_path', type=str, default='../results', 
                         help='Path to save results')
     parser.add_argument('--device', type=str, default='cuda', choices=['cuda', 'cpu'],
                         help='Device to use for training and inference')
@@ -114,8 +114,8 @@ def main(args):
     
     # Load the dataset
     features, labels, _ = load_data(data_dir, scaler_name=args.scaler_name, preprocessed=False)
-    n_classes = labels.shape[1] if labels.ndim > 1 else len(np.unique(labels))
-
+    n_classes = len(np.unique(labels))
+    
     # Initialize dataframes for storing results
     predictions_test_df = pd.DataFrame()
     performance_test_df = pd.DataFrame()
@@ -188,11 +188,6 @@ def main(args):
                 performance_test["fold"] = fold_id
                 performance_test_df = pd.concat([performance_test_df, performance_test])
 
-                # Save the performance
-                print('Saving the prediction results...')
-                predictions_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_preds.csv", sep='\t')
-                performance_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_performance.csv", sep='\t')
-            
             print(f'\n', performance_test_df)
     
     predictions_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_preds.csv", sep='\t')
