@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import torch
 from typing import Tuple, Optional
-from pyDeepInsight import ImageTransformer
+# from pyDeepInsight import ImageTransformer
 from sklearn.model_selection import StratifiedKFold, train_test_split
 
 from config import DL_MODELS, DL_MODELS_IMAGE_BASED, ML_MODELS, METRICS
@@ -23,8 +23,7 @@ def get_args():
     # Dataset parameters
     parser.add_argument('--data_path', type=str, default='/home/yan/TabMap/data', 
                         help='Path to the dataset directory')
-
-    parser.add_argument('--data_set', type=str, default='parkinson',
+    parser.add_argument('--data_set', type=str, default='micromass',
                         help='Dataset name')
     parser.add_argument('--scaler_name', type=str, default='minmax', 
                         help='Data preprocessing scaler name')
@@ -107,7 +106,7 @@ def generate_images(args,
 
 def main(args):
     model_list = ['TabMap', 'LR', 'RF', 'GB', 'XGB']
-    # model_list = ['TabMap','DeepInsight', 'TabTransformer', '1DCNN', 'LR', 'RF', 'GB', 'XGB']
+    # model_list = ['TabMap', 'TabTransformer', '1DCNN', 'LR', 'RF', 'GB', 'XGB']
     
     # Define paths and ensure directory existence
     data_dir = os.path.join(args.data_path, args.data_set)
@@ -120,10 +119,9 @@ def main(args):
     # Initialize dataframes for storing results
     predictions_test_df = pd.DataFrame()
     performance_test_df = pd.DataFrame()
-    # best_hparams = []
     
     # Run trials
-    for trial in range(args.num_trials):
+    for trial in range(args.num_trials):        
         args.seed = trial
         
         # set seed
@@ -132,6 +130,7 @@ def main(args):
         
         skf = StratifiedKFold(n_splits=args.cv_folds, shuffle=True, random_state=args.seed)
         for fold_id, (train_idx_all, test_idx) in enumerate(skf.split(features, labels)):
+            print(f'\nTrail: {trial}, Fold_id: {fold_id}')
             train_idx, valid_idx = train_test_split(train_idx_all, test_size=0.125,
                                                     random_state=args.seed,
                                                     stratify=labels[train_idx_all])
@@ -169,7 +168,6 @@ def main(args):
                 best_params_dict = tuner.params_dict
                 best_params_dict['trial'] = trial
                 best_params_dict['fold'] = fold_id
-                # best_hparams.append(best_params_dict)
                 
                 # Model evaluation on the best trained model
                 model_eval = Model_Evaluation(model_id)
@@ -195,7 +193,7 @@ def main(args):
                 predictions_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_preds.csv", sep='\t')
                 performance_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_performance.csv", sep='\t')
             
-            print(f'Trail: {trial}, Fold_id: {fold_id}\n', performance_test_df)
+            print(f'\n', performance_test_df)
     
     predictions_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_preds.csv", sep='\t')
     performance_test_df.set_index(["model", "trial", "fold"]).to_csv(f"{args.results_path}/{args.data_set}/model_performance.csv", sep='\t')
@@ -205,12 +203,8 @@ def main(args):
         mean_performance_test_df[(metric, "mean")] = mean_performance_test_df[(metric, "mean")].round(4)
         mean_performance_test_df[(metric, "std")] = mean_performance_test_df[(metric, "std")].round(4)
     mean_performance_test_df.to_csv(f"{args.results_path}/{args.data_set}/mean_model_performance.csv", sep='\t')
-    print("Mean Performance Metrics:")
+    print("\nMean Performance Metrics:")
     print(mean_performance_test_df.to_string(index=False), '\n')  
-    
-    # best_parameters_path = f"{args.results_path}/{args.data_set}/model_best_params.json"
-    # with open(best_parameters_path, "w") as json_file:
-    #     json.dump(best_hparams, json_file, indent=4)
 
 
 if __name__ == '__main__':

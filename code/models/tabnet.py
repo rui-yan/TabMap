@@ -26,7 +26,7 @@ def train_tabnet(config, data_dir, train_idx, valid_idx, model_id, model_path, o
         optimizer_params={
             "lr": config["lr"],
         },
-        verbose=1,
+        verbose=0,
         seed=config["seed"],
         device_name=device,
     )
@@ -50,8 +50,7 @@ def train_tabnet(config, data_dir, train_idx, valid_idx, model_id, model_path, o
     return model.best_cost
 
 def test_tabnet(model, testset, device='cuda'):
-    print('Evaluating the model...')
-    model.to(device)
+    # print('Evaluating the model...')
     all_probs = model.predict_proba(testset.X)
     all_preds = np.argmax(all_probs, axis=1)
     return all_probs, all_preds

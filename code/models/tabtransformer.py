@@ -113,7 +113,7 @@ def train_TabTransformer(config,  data_dir, train_idx, valid_idx, model_id, mode
 
 
 def test_TabTransformer(model, testset, device='cuda'):
-    print('Evaluating the model...')
+    # print('Evaluating the model...')
     test_loader = DataLoader(testset, shuffle=False)
     model.eval()
     model = model.to(device)

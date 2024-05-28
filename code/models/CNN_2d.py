@@ -148,7 +148,7 @@ def test_2DCNN(model, testset, device='cuda'):
     """
     Evaluate a 2D CNN model on the test dataset.
     """
-    print('Evaluating the model...')
+    # print('Evaluating the model...')
     test_loader = DataLoader(testset, shuffle=False)
     model.eval()
     model.to(device)

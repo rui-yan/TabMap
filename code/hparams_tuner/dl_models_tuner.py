@@ -262,7 +262,7 @@ class DLModelTuner:
                                         n_steps=hparams_dict["n_steps"],
                                         gamma=hparams_dict["gamma"],
                                         lambda_sparse=hparams_dict['lambda_sparse'],
-                                        ).to(self.device)
+                                        )
                 best_model.load_model(os.path.join(model_path, 'tabnet_model.zip'))
             elif self.model_id in ['TabTransformer']:
                 best_model = self.model(categories=(),
