@@ -105,7 +105,7 @@ def generate_images(args,
 
 
 def main(args):
-    model_list = ['TabMap', 'LR', 'RF', 'GB', 'XGB']
+    model_list = ['TabMap']
     # model_list = ['TabMap', 'TabTransformer', '1DCNN', 'LR', 'RF', 'GB', 'XGB']
     
     # Define paths and ensure directory existence
@@ -125,8 +125,8 @@ def main(args):
         args.seed = trial
         
         # set seed
-        torch.manual_seed(args.seed)
         np.random.seed(args.seed)
+        torch.manual_seed(args.seed)
         
         skf = StratifiedKFold(n_splits=args.cv_folds, shuffle=True, random_state=args.seed)
         for fold_id, (train_idx_all, test_idx) in enumerate(skf.split(features, labels)):
