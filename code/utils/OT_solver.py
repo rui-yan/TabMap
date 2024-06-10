@@ -77,8 +77,6 @@ class gromov_wass_solver:
             Entropic regularization parameter. Default is 0.0.
         tol : float, optional
             Tolerance for the stopping criterion. Default is 1e-9.
-        add_const : bool, optional
-            If True, adds the constant matrix to the tensor before solving. Default is False.
         seed : int, optional
             Seed for the random number generator to ensure reproducibility. Default is 42.
         """

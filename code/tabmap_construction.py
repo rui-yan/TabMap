@@ -5,6 +5,7 @@ import numpy as np
 import gower
 from scipy.optimize import linear_sum_assignment
 from sklearn.metrics.pairwise import pairwise_distances
+from scipy.spatial.distance import euclidean
 
 from utils import OT_solver
 
@@ -86,7 +87,7 @@ class TabMapGenerator:
         elif self.version == 'v2.0':
             grid = np.indices((row_num, col_num)).reshape(2, -1).T
             return pairwise_distances(grid)
-
+    
     def fit(self, data, row_num=None, col_num=None, truncate=False):
         """
         Computes the projection matrix from data to a grid layout specified by row_num and col_num.
@@ -151,7 +152,7 @@ class TabMapGenerator:
         
         self.row_num = row_num
         self.col_num = col_num
-        self.T = T
+        self.project_matrix = T
         
         return self
     
@@ -169,10 +170,12 @@ class TabMapGenerator:
         ndarray: Transformed TabMaps.
         """
         grid_points = self.row_num * self.col_num
-        permuted_data = np.matmul(data, self.T)
+        permuted_data = np.matmul(data, self.project_matrix)
         # Pad the permuted data such that the number of data points can be reshaped into a square
-        padded_data = np.pad(permuted_data, ((0, 0), (0, grid_points - permuted_data.shape[1])), 'constant')
-        tabmaps = np.reshape(padded_data, (data.shape[0], self.col_num, self.row_num)).transpose(0, 2, 1)
+        padded_data = np.pad(permuted_data, ((0, 0), (0, grid_points - permuted_data.shape[1])), 
+                             mode='constant', constant_values=0)
+        tabmaps = np.reshape(padded_data, (data.shape[0], self.col_num, self.row_num), order='F')
+        tabmaps = tabmaps.transpose(0, 2, 1)
         return tabmaps
     
     def fit_transform(self, data, row_num=None, col_num=None, truncate=False):

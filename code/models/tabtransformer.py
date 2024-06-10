@@ -5,7 +5,8 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 import numpy as np
 from sklearn.metrics import balanced_accuracy_score
-
+import sys
+sys.path.append('..')
 from dataloader.dataset import load_data
 from dataloader.data_loader import TabularDataset
 from tab_transformer_pytorch import TabTransformer
@@ -21,7 +22,7 @@ def train_TabTransformer(config,  data_dir, train_idx, valid_idx, model_id, mode
     valid_dataset = TabularDataset(features[valid_idx], labels[valid_idx])
     
     train_loader = DataLoader(train_dataset, batch_size=int(config["batch_size"]), num_workers=8, shuffle=True)
-    valid_loader = DataLoader(valid_dataset, batch_size=int(config["batch_size"]), num_workers=8, shuffle=False)
+    valid_loader = DataLoader(valid_dataset, batch_size=int(config["batch_size"]), num_workers=8, shuffle=True)
 
     criterion = nn.CrossEntropyLoss()
     model = TabTransformer(categories=(),

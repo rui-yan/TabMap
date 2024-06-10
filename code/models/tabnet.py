@@ -3,7 +3,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-
+import sys
+sys.path.append('..')
 from dataloader.dataset import load_data
 from pytorch_tabnet.tab_model import TabNetClassifier
 

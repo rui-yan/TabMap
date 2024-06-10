@@ -5,7 +5,8 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 import numpy as np
 from sklearn.metrics import balanced_accuracy_score
-
+import sys
+sys.path.append('..')
 from dataloader.dataset import load_data
 from dataloader.data_loader import TabularDataset
 
@@ -63,7 +64,7 @@ def train_2DCNN(config, data_dir, train_idx, valid_idx, model_id, model_path, op
     valid_dataset = TabularDataset(features[valid_idx], labels[valid_idx])
     
     train_loader = DataLoader(train_dataset, batch_size=int(config["batch_size"]), num_workers=8, shuffle=True)
-    valid_loader = DataLoader(valid_dataset, batch_size=int(config["batch_size"]), num_workers=8, shuffle=False)
+    valid_loader = DataLoader(valid_dataset, batch_size=int(config["batch_size"]), num_workers=8, shuffle=True)
     
     criterion = nn.CrossEntropyLoss()
     model = CNN_2d(input_dim=train_dataset.input_size, 

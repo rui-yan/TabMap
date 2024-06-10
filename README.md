@@ -55,7 +55,7 @@ python main.py
 Refer to the [TabMap/code/main.py](https://github.com/rui-yan/TabMap/blob/main/code/main.py) file for details on model training and evaluation. This file also includes k-fold cross-validation, hyperparameter tuning, and comparisons with other classifiers used to generate the results presented in our paper.
 
 ## Example Jupyter notebooks for using TabMap
-TODO
+- Classification: Please see our example notebook in [demo_classification.ipynb](https://github.com/rui-yan/TabMap/blob/main/notebooks/demo_classification.ipynb).
 
 
 

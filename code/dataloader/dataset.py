@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
+import sys
+sys.path.append('..')
 from utils.data_util import data_preprocess, add_noise_to_dataset
 
 

@@ -9,20 +9,22 @@ import torch.nn as nn
 import numpy as np
 
 # Import models
+import sys
+sys.path.append('..')
 from models.CNN_2d import CNN_2d, train_2DCNN
 from models.soft_ordering_CNN_1d import SoftOrdering1DCNN, train_1DCNN
 from models.tabnet import train_tabnet
+from models.tabtransformer import train_TabTransformer
 from pytorch_tabnet.tab_model import TabNetClassifier
 from tab_transformer_pytorch import TabTransformer
-from models.tabtransformer import train_TabTransformer
 
 # Import configurations
-from config import DL_MODELS, DL_MODELS_IMAGE_BASED, DL_MODELS_TRANSFORMER_BASED
+from config import DL_MODELS, DL_MODELS_TRANSFORMER_BASED
 
 
 class DLModelTuner:
     def __init__(self, data_config, train_idx, valid_idx, model_id, results_path=None, 
-                 use_default_hparams=False, opt_metric='balanced_accuracy', random_seed=None):
+                 use_default_hparams=False, opt_metric='loss', random_seed=None):
 
         self.data_config = data_config
         self.train_idx, self.valid_idx = train_idx, valid_idx
@@ -147,7 +149,7 @@ class DLModelTuner:
             if isinstance(param_range, list):
                 hyperparameter_values[param_name] = trial.suggest_categorical(param_name, param_range)
             else:
-                hyperparameter_values[param_name] = param_range
+                hyperparameter_values[param_name] = param_range[0]
         
         logging.info(f"Trying hyperparameters: {hyperparameter_values}")
         validation_metric = train_func(config=hyperparameter_values,

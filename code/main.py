@@ -19,7 +19,7 @@ from tabmap_construction import TabMapGenerator
 def get_args():
     parser = argparse.ArgumentParser(description='Script for training a TabMap classifier',
                                      add_help=False)
-
+    
     # Dataset parameters
     parser.add_argument('--data_path', type=str, default='../data', 
                         help='Path to the dataset directory')
@@ -45,7 +45,7 @@ def get_args():
     # Hyperparameter tuning paramters
     parser.add_argument('--use_default_hparams', action="store_true", default=True,
                         help='Use default hyperparameters instead of tuning')
-    parser.add_argument('--opt_metric', type=str, default='balanced_accuracy', choices=['balanced_accuracy', 'loss'],
+    parser.add_argument('--opt_metric', type=str, default='loss', choices=['balanced_accuracy', 'loss'],
                         help='Metric to optimize during hyperparameter tuning')
     
     # Evaluation parameters

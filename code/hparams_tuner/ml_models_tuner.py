@@ -8,6 +8,8 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from xgboost import XGBClassifier
 
+import sys
+sys.path.append('..')
 from dataloader.dataset import load_data
 from config import ML_MODELS
 
