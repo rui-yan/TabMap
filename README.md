@@ -12,7 +12,7 @@
 ## Table of Contents
 - [Set up the Conda Environment](#set-up-the-conda-environment)
 - [Train and evaluate the TabMap classifier](#train-and-evaluate-the-tabmap-classifier)
-- [Example Jupyter notebooks for using TabMap](#example-jupter-notebooks-for-using-tabmap)
+- [Example Jupyter notebooks for using TabMap](#example-jupyter-notebooks-for-using-tabmap)
 
 ## Set Up the Conda Environment
 ```bash
