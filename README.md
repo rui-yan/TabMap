@@ -1,8 +1,9 @@
 # TabMap
 
 ### Interpretable Discovery of Patterns in Tabular Data via Spatially Semantic Topographic Maps
+Nature Biomedical Engineering, 2024. [HTML](https://www.nature.com/articles/s41551-024-01268-6) | [PDF](https://rdcu.be/dW1Iy) | [Cite](#citation)
 
-**TL;DR:** Python implementation of TabMap proposed in [our paper](). 
+**TL;DR:** Python implementation of TabMap proposed in [our paper](https://www.nature.com/articles/s41551-024-01268-6).
 
 - TabMap unravels intertwined relationships in tabular data by transforming each data sample into a spatially semantic 2D topographic map, which we refer to as TabMap.
 - A TabMap preserves the original feature values as pixel intensities, with the relationships among the features spatially encoded in the map (the strength of two inter-related features correlates with their distance on the map).
