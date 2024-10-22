@@ -1,5 +1,7 @@
 # TabMap
 
+[![PyPI version](https://badge.fury.io/py/tabmap.svg)](https://badge.fury.io/py/tabmap)
+
 ### Interpretable Discovery of Patterns in Tabular Data via Spatially Semantic Topographic Maps
 Nature Biomedical Engineering, 2024. [HTML](https://www.nature.com/articles/s41551-024-01268-6) | [PDF](https://rdcu.be/dW1Iy) | [Cite](#citation)
 
@@ -13,11 +15,17 @@ Nature Biomedical Engineering, 2024. [HTML](https://www.nature.com/articles/s415
 <img src="docs/TabMap.png" width="800px" align="center" />
 
 ## Table of Contents
-- [Set up the Conda Environment](#set-up-the-conda-environment)
+- [Installation](#installation)
 - [Train and evaluate the TabMap classifier](#train-and-evaluate-the-tabmap-classifier)
 - [Example Jupyter notebooks for using TabMap](#example-jupyter-notebooks-for-using-tabmap)
 
-## Set Up the Conda Environment
+## Installation
+
+tabmap is available on PyPI. To install tabmap, run the following command:
+```
+pip install tabmap
+```
+For development, you can check the latest sources with the command:
 ```bash
 git clone https://github.com/rui-yan/TabMap.git
 cd TabMap
