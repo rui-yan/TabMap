@@ -1,0 +1,48 @@
+[project]
+name = "tabmap"
+version = "0.1.0"
+description = "A Python package for tabular data analysis using TabMap."
+readme = "README.md"
+readme_content_type = "text/markdown"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Rui Yan", email = "ruiyan820@gmail.com" },
+]
+keywords = ["tabular data", "data analysis", "machine learning", "data visualization"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.23.1",
+    "scikit-learn>=1.4.2",
+    "torch>=1.13.1",
+    "torchvision>=0.14.1",
+    "pot>=0.9.2",
+    "optuna>=3.3.0",
+    "shap==0.36.0",
+    "seaborn>=0.12.2",
+    "gower==0.1.2",
+    "pandas>=1.5.3",
+    "pytorch-tabnet==4.1.0",
+    "tab-transformer-pytorch==0.2.6",
+    "xgboost==1.7.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/rui-yan/TabMap"
+Source = "https://github.com/rui-yan/TabMap"
+Tracker = "https://github.com/rui-yan/TabMap/issues"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
