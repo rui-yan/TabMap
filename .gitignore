@@ -8,14 +8,13 @@
 __pycache__/
 *.pyc
 
-# Specific files and directories in 'code'
-code/.ipynb_checkpoints/
-code/__pycache__/
-code/utils/__pyac
+# Specific files and directories in 'tabmap'
+tabmap/ablation/
+tabmap/notebooks/
+tabmap/plot_figures/
+tabmap/.ipynb_checkpoints/
 
-# Specific files and directories in 'data'
+# Specific files and directories in 'data' and 'results'
 data/.DS_Store
 data/
-
-notebooks/
 results/
