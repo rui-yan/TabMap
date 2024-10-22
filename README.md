@@ -1,7 +1,6 @@
 # TabMap
 
 [![PyPI version](https://badge.fury.io/py/tabmap.svg)](https://badge.fury.io/py/tabmap)
-
 ### Interpretable Discovery of Patterns in Tabular Data via Spatially Semantic Topographic Maps
 Nature Biomedical Engineering, 2024. [HTML](https://www.nature.com/articles/s41551-024-01268-6) | [PDF](https://rdcu.be/dW1Iy) | [Cite](#citation)
 
