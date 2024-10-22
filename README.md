@@ -51,7 +51,6 @@ X_tabmap = generator.fit_transform(X)
 
 ### Train a 2D convolutional neural network (CNN) model for classification
 ```bash
-cd code
 python main.py
 ```
 Refer to the [main.py](https://github.com/rui-yan/TabMap/blob/main/code/main.py) file for details on model training and evaluation. This file also includes k-fold cross-validation, hyperparameter tuning, and comparisons with other classifiers used to generate the results presented in our paper.

@@ -3,7 +3,6 @@ name = "tabmap"
 version = "0.1.0"
 description = "A Python package for tabular data analysis using TabMap."
 readme = "README.md"
-readme_content_type = "text/markdown"
 license = { file = "LICENSE" }
 authors = [
     { name = "Rui Yan", email = "ruiyan820@gmail.com" },
@@ -46,3 +45,6 @@ Tracker = "https://github.com/rui-yan/TabMap/issues"
 [build-system]
 requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["tabmap"]
