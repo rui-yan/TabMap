@@ -19,7 +19,6 @@ Nature Biomedical Engineering, 2024. [HTML](https://www.nature.com/articles/s415
 - [Example Jupyter notebooks for using TabMap](#example-jupyter-notebooks-for-using-tabmap)
 
 ## Installation
-
 tabmap is available on PyPI. To install tabmap, run the following command:
 ```
 pip install tabmap
