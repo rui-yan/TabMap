@@ -12,3 +12,8 @@ Links to each of the datasets:
 - bctil: https://singlecell.broadinstitute.org/single_cell/study/SCP2331/single-cell-profiling-of-breast-cancer-t-cells-reveals-a-tissue-resident-memory-subset-associated-with-improved-prognosis#study-summary
 - lung: https://github.com/jundongl/scikit-feature/blob/master/skfeature/data/lung.mat
 - tox-171: https://github.com/jundongl/scikit-feature/blob/master/skfeature/data/TOX-171.mat
+
+
+After downloading the datasets, convert their format (e.g., .mat or other formats) into a CSV file. Then, create a folder named `DATASET_NAME` and save the corresponding CSV file as `data_raw.csv` in that folder. Four example datasets formatted this way are available in the [data folder](https://github.com/rui-yan/TabMap/tree/main/data) for referenec. This ensures compatibility with the data loading functionality implemented in our code. 
+
+Alternatively, you can clone the repository and customize the [data loading code](https://github.com/rui-yan/TabMap/blob/main/tabmap/dataloader/dataset.py) to meet your needs.
