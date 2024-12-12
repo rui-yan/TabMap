@@ -5,8 +5,8 @@ from sklearn import metrics
 from .dataloader.data_loader import TabularDataset
 from .models.CNN_2d import test_2DCNN
 from .models.soft_ordering_CNN_1d import test_1DCNN
-# from .models.tabnet import test_tabnet
-# from .models.tabtransformer import test_TabTransformer
+from .models.tabnet import test_tabnet
+from .models.tabtransformer import test_TabTransformer
 
 from .config import DL_MODELS, DL_MODELS_IMAGE_BASED, ML_MODELS
 
@@ -30,10 +30,10 @@ class Model_Evaluation:
                 test_func = test_1DCNN
             elif self.model_id in DL_MODELS_IMAGE_BASED:
                 test_func = test_2DCNN
-            # elif self.model_id == 'TabNet':
-            #     test_func = test_tabnet
-            # elif self.model_id == 'TabTransformer':
-            #     test_func = test_TabTransformer
+            elif self.model_id == 'TabNet':
+                test_func = test_tabnet
+            elif self.model_id == 'TabTransformer':
+                test_func = test_TabTransformer
             y_prob, y_pred = test_func(model, testset, self.device)
         return y_prob, y_pred
     
