@@ -59,7 +59,7 @@ X_tabmap = generator.fit_transform(X)
 ```bash
 python main.py
 ```
-Refer to the [main.py](https://github.com/rui-yan/TabMap/blob/main/code/main.py) file for details on model training and evaluation. This file also includes k-fold cross-validation, hyperparameter tuning, and comparisons with other classifiers used to generate the results presented in our paper.
+Refer to the [main.py](https://github.com/rui-yan/TabMap/blob/main/main.py) file for details on model training and evaluation. This file also includes k-fold cross-validation, hyperparameter tuning, and comparisons with other classifiers used to generate the results presented in our paper.
 
 ## Example Jupyter notebooks for using TabMap
 - Benchmarking: [Tutorial_Benchmarking.ipynb](https://github.com/rui-yan/TabMap/blob/main/tutorials/Tutorial_Benchmarking.ipynb).
